@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - QuizMaster</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dashboard-page">
+    <div class="grain-overlay"></div>
+    
+    <header class="main-header">
+        <div class="logo">
+            <span class="logo-icon">◆</span>
+            <span class="logo-text">QuizMaster</span>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="dashboard.html" class="nav-link active">Dashboard</a>
+        </nav>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            <section class="dashboard-header">
+                <div class="header-content">
+                    <h1 class="dashboard-title">Mijn Quizzen</h1>
+                    <p class="dashboard-subtitle">Maak en beheer je eigen quizzen</p>
+                </div>
+                <a href="#create-quiz-modal" class="btn btn-primary">
+                    <span class="btn-icon">+</span>
+                    Nieuwe Quiz
+                </a>
+            </section>
+
+            <section class="stats-overview">
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper purple">
+                        <span class="stat-icon">📚</span>
+                    </div>
+                    <div class="stat-details">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Totaal Quizzen</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper teal">
+                        <span class="stat-icon">❓</span>
+                    </div>
+                    <div class="stat-details">
+                        <div class="stat-value">124</div>
+                        <div class="stat-label">Totaal Vragen</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper pink">
+                        <span class="stat-icon">👥</span>
+                    </div>
+                    <div class="stat-details">
+                        <div class="stat-value">342</div>
+                        <div class="stat-label">Keer Gespeeld</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="quizzes-section">
+                <div class="quizzes-grid">
+                    <!-- Quiz Card 1 -->
+                    <div class="quiz-card">
+                        <div class="quiz-card-header">
+                            <div class="quiz-category cat-purple">Geschiedenis</div>
+                            <div class="quiz-actions">
+                                <a href="#edit-quiz-modal" class="action-btn" title="Bewerken">
+                                    <span>✏️</span>
+                                </a>
+                                <a href="#delete-modal" class="action-btn" title="Verwijderen">
+                                    <span>🗑️</span>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="quiz-title">Romeinse Rijk</h3>
+                        <p class="quiz-description">Test je kennis over het oude Rome en haar keizers</p>
+                        <div class="quiz-meta">
+                            <span class="meta-item">
+                                <span class="meta-icon">❓</span>
+                                15 vragen
+                            </span>
+                            <span class="meta-item">
+                                <span class="meta-icon">👁️</span>
+                                45 views
+                            </span>
+                        </div>
+                        <div class="quiz-footer">
+                            <a href="quiz.html" class="btn-play">
+                                <span>Speel Quiz</span>
+                                <span class="arrow">→</span>
+                            </a>
+                            <a href="#questions-modal" class="btn-questions">Vragen Beheren</a>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Card 2 -->
+                    <div class="quiz-card">
+                        <div class="quiz-card-header">
+                            <div class="quiz-category cat-teal">Wetenschap</div>
+                            <div class="quiz-actions">
+                                <a href="#edit-quiz-modal" class="action-btn" title="Bewerken">
+                                    <span>✏️</span>
+                                </a>
+                                <a href="#delete-modal" class="action-btn" title="Verwijderen">
+                                    <span>🗑️</span>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="quiz-title">Biologie Basis</h3>
+                        <p class="quiz-description">Fundamentele concepten in biologie en natuurkunde</p>
+                        <div class="quiz-meta">
+                            <span class="meta-item">
+                                <span class="meta-icon">❓</span>
+                                20 vragen
+                            </span>
+                            <span class="meta-item">
+                                <span class="meta-icon">👁️</span>
+                                89 views
+                            </span>
+                        </div>
+                        <div class="quiz-footer">
+                            <a href="quiz.html" class="btn-play">
+                                <span>Speel Quiz</span>
+                                <span class="arrow">→</span>
+                            </a>
+                            <a href="#questions-modal" class="btn-questions">Vragen Beheren</a>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Card 3 -->
+                    <div class="quiz-card">
+                        <div class="quiz-card-header">
+                            <div class="quiz-category cat-pink">Pop Cultuur</div>
+                            <div class="quiz-actions">
+                                <a href="#edit-quiz-modal" class="action-btn" title="Bewerken">
+                                    <span>✏️</span>
+                                </a>
+                                <a href="#delete-modal" class="action-btn" title="Verwijderen">
+                                    <span>🗑️</span>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="quiz-title">Film & Series</h3>
+                        <p class="quiz-description">Van klassiekers tot moderne blockbusters</p>
+                        <div class="quiz-meta">
+                            <span class="meta-item">
+                                <span class="meta-icon">❓</span>
+                                12 vragen
+                            </span>
+                            <span class="meta-item">
+                                <span class="meta-icon">👁️</span>
+                                67 views
+                            </span>
+                        </div>
+                        <div class="quiz-footer">
+                            <a href="quiz.html" class="btn-play">
+                                <span>Speel Quiz</span>
+                                <span class="arrow">→</span>
+                            </a>
+                            <a href="#questions-modal" class="btn-questions">Vragen Beheren</a>
+                        </div>
+                    </div>
+
+                    <!-- Empty State Card -->
+                    <a href="#create-quiz-modal" class="quiz-card-empty">
+                        <div class="empty-icon">+</div>
+                        <div class="empty-text">Maak Nieuwe Quiz</div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal: Create Quiz -->
+    <div id="create-quiz-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">Nieuwe Quiz Maken</h2>
+                <a href="#" class="modal-close">✕</a>
+            </div>
+            <form class="modal-form">
+                <div class="form-group">
+                    <label class="form-label" for="quiz-name">Quiz Naam</label>
+                    <input type="text" id="quiz-name" class="form-input" placeholder="Bijvoorbeeld: Wereldgeschiedenis" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="quiz-description">Beschrijving</label>
+                    <textarea id="quiz-description" class="form-textarea" rows="3" placeholder="Korte beschrijving van de quiz..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="quiz-category">Categorie</label>
+                    <select id="quiz-category" class="form-select">
+                        <option value="purple">Geschiedenis</option>
+                        <option value="teal">Wetenschap</option>
+                        <option value="pink">Pop Cultuur</option>
+                        <option value="orange">Sport</option>
+                        <option value="green">Geografie</option>
+                    </select>
+                </div>
+                
+                <div class="modal-actions">
+                    <a href="#" class="btn btn-secondary">Annuleren</a>
+                    <button type="submit" class="btn btn-primary">Quiz Aanmaken</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Edit Quiz -->
+    <div id="edit-quiz-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">Quiz Bewerken</h2>
+                <a href="#" class="modal-close">✕</a>
+            </div>
+            <form class="modal-form">
+                <div class="form-group">
+                    <label class="form-label" for="edit-quiz-name">Quiz Naam</label>
+                    <input type="text" id="edit-quiz-name" class="form-input" value="Romeinse Rijk" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="edit-quiz-description">Beschrijving</label>
+                    <textarea id="edit-quiz-description" class="form-textarea" rows="3">Test je kennis over het oude Rome en haar keizers</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="edit-quiz-category">Categorie</label>
+                    <select id="edit-quiz-category" class="form-select">
+                        <option value="purple" selected>Geschiedenis</option>
+                        <option value="teal">Wetenschap</option>
+                        <option value="pink">Pop Cultuur</option>
+                        <option value="orange">Sport</option>
+                        <option value="green">Geografie</option>
+                    </select>
+                </div>
+                
+                <div class="modal-actions">
+                    <a href="#" class="btn btn-secondary">Annuleren</a>
+                    <button type="submit" class="btn btn-primary">Opslaan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Questions Management -->
+    <div id="questions-modal" class="modal modal-large">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title">Vragen Beheren</h2>
+                    <p class="modal-subtitle">Romeinse Rijk</p>
+                </div>
+                <a href="#" class="modal-close">✕</a>
+            </div>
+            
+            <div class="questions-header">
+                <a href="#add-question" class="btn btn-primary btn-sm">
+                    <span class="btn-icon">+</span>
+                    Vraag Toevoegen
+                </a>
+            </div>
+
+            <div class="questions-list">
+                <!-- Question Item 1 -->
+                <div class="question-item">
+                    <div class="question-number">1</div>
+                    <div class="question-content">
+                        <div class="question-text-preview">Wie was de eerste keizer van het Romeinse Rijk?</div>
+                        <div class="question-answers-preview">
+                            <span class="answer-tag">A. Julius Caesar</span>
+                            <span class="answer-tag correct">B. Augustus</span>
+                            <span class="answer-tag">C. Nero</span>
+                            <span class="answer-tag">D. Tiberius</span>
+                        </div>
+                    </div>
+                    <div class="question-actions">
+                        <a href="#edit-question" class="action-btn-sm">✏️</a>
+                        <a href="#delete-question" class="action-btn-sm danger">🗑️</a>
+                    </div>
+                </div>
+
+                <!-- Question Item 2 -->
+                <div class="question-item">
+                    <div class="question-number">2</div>
+                    <div class="question-content">
+                        <div class="question-text-preview">In welk jaar viel het West-Romeinse Rijk?</div>
+                        <div class="question-answers-preview">
+                            <span class="answer-tag">A. 410 n.Chr.</span>
+                            <span class="answer-tag">B. 455 n.Chr.</span>
+                            <span class="answer-tag correct">C. 476 n.Chr.</span>
+                            <span class="answer-tag">D. 500 n.Chr.</span>
+                        </div>
+                    </div>
+                    <div class="question-actions">
+                        <a href="#edit-question" class="action-btn-sm">✏️</a>
+                        <a href="#delete-question" class="action-btn-sm danger">🗑️</a>
+                    </div>
+                </div>
+
+                <!-- Add Question Form (Initially Hidden) -->
+                <div id="add-question" class="add-question-form">
+                    <h3 class="form-section-title">Nieuwe Vraag Toevoegen</h3>
+                    <form>
+                        <div class="form-group">
+                            <label class="form-label">Vraag</label>
+                            <input type="text" class="form-input" placeholder="Typ je vraag hier...">
+                        </div>
+                        
+                        <div class="answers-grid-form">
+                            <div class="form-group">
+                                <label class="form-label">Antwoord A</label>
+                                <input type="text" class="form-input" placeholder="Antwoord A">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Antwoord B</label>
+                                <input type="text" class="form-input" placeholder="Antwoord B">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Antwoord C</label>
+                                <input type="text" class="form-input" placeholder="Antwoord C">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Antwoord D</label>
+                                <input type="text" class="form-input" placeholder="Antwoord D">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Correct Antwoord</label>
+                            <select class="form-select">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <a href="#" class="btn btn-secondary">Annuleren</a>
+                            <button type="submit" class="btn btn-primary">Vraag Toevoegen</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Delete Confirmation -->
+    <div id="delete-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container modal-small">
+            <div class="modal-header">
+                <h2 class="modal-title">Quiz Verwijderen?</h2>
+                <a href="#" class="modal-close">✕</a>
+            </div>
+            <div class="modal-body">
+                <p class="delete-warning">
+                    Weet je zeker dat je deze quiz wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.
+                </p>
+                <div class="delete-info">
+                    <strong>Romeinse Rijk</strong>
+                    <span>15 vragen • 45 views</span>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <a href="#" class="btn btn-secondary">Annuleren</a>
+                <button class="btn btn-danger">Verwijderen</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-icon">◆</span>
+                <span class="footer-text">QuizMaster © 2026</span>
+            </div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Over</a>
+                <a href="#" class="footer-link">Privacy</a>
+                <a href="#" class="footer-link">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
