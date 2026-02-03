@@ -37,145 +37,12 @@
                     Nieuwe Quiz
                 </a>
             </section>
-
-            <section class="stats-overview">
-                <div class="stat-card">
-                    <div class="stat-icon-wrapper purple">
-                        <span class="stat-icon">📚</span>
-                    </div>
-                    <div class="stat-details">
-                        <div class="stat-value">8</div>
-                        <div class="stat-label">Totaal Quizzen</div>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon-wrapper teal">
-                        <span class="stat-icon">❓</span>
-                    </div>
-                    <div class="stat-details">
-                        <div class="stat-value">124</div>
-                        <div class="stat-label">Totaal Vragen</div>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon-wrapper pink">
-                        <span class="stat-icon">👥</span>
-                    </div>
-                    <div class="stat-details">
-                        <div class="stat-value">342</div>
-                        <div class="stat-label">Keer Gespeeld</div>
-                    </div>
-                </div>
-            </section>
-
             <section class="quizzes-section">
                 <div class="quizzes-grid">
-                    <!-- Quiz Card 1 -->
-                    <div class="quiz-card">
-                        <div class="quiz-card-header">
-                            <div class="quiz-category cat-purple">Geschiedenis</div>
-                            <div class="quiz-actions">
-                                <a href="#edit-quiz-modal" class="action-btn" title="Bewerken">
-                                    <span>✏️</span>
-                                </a>
-                                <a href="#delete-modal" class="action-btn" title="Verwijderen">
-                                    <span>🗑️</span>
-                                </a>
-                            </div>
-                        </div>
-                        <h3 class="quiz-title">Romeinse Rijk</h3>
-                        <p class="quiz-description">Test je kennis over het oude Rome en haar keizers</p>
-                        <div class="quiz-meta">
-                            <span class="meta-item">
-                                <span class="meta-icon">❓</span>
-                                15 vragen
-                            </span>
-                            <span class="meta-item">
-                                <span class="meta-icon">👁️</span>
-                                45 views
-                            </span>
-                        </div>
-                        <div class="quiz-footer">
-                            <a href="quiz.html" class="btn-play">
-                                <span>Speel Quiz</span>
-                                <span class="arrow">→</span>
-                            </a>
-                            <a href="#questions-modal" class="btn-questions">Vragen Beheren</a>
-                        </div>
-                    </div>
 
-                    <!-- Quiz Card 2 -->
-                    <div class="quiz-card">
-                        <div class="quiz-card-header">
-                            <div class="quiz-category cat-teal">Wetenschap</div>
-                            <div class="quiz-actions">
-                                <a href="#edit-quiz-modal" class="action-btn" title="Bewerken">
-                                    <span>✏️</span>
-                                </a>
-                                <a href="#delete-modal" class="action-btn" title="Verwijderen">
-                                    <span>🗑️</span>
-                                </a>
-                            </div>
-                        </div>
-                        <h3 class="quiz-title">Biologie Basis</h3>
-                        <p class="quiz-description">Fundamentele concepten in biologie en natuurkunde</p>
-                        <div class="quiz-meta">
-                            <span class="meta-item">
-                                <span class="meta-icon">❓</span>
-                                20 vragen
-                            </span>
-                            <span class="meta-item">
-                                <span class="meta-icon">👁️</span>
-                                89 views
-                            </span>
-                        </div>
-                        <div class="quiz-footer">
-                            <a href="quiz.html" class="btn-play">
-                                <span>Speel Quiz</span>
-                                <span class="arrow">→</span>
-                            </a>
-                            <a href="#questions-modal" class="btn-questions">Vragen Beheren</a>
-                        </div>
-                    </div>
-
-                    <!-- Quiz Card 3 -->
-                    <div class="quiz-card">
-                        <div class="quiz-card-header">
-                            <div class="quiz-category cat-pink">Pop Cultuur</div>
-                            <div class="quiz-actions">
-                                <a href="#edit-quiz-modal" class="action-btn" title="Bewerken">
-                                    <span>✏️</span>
-                                </a>
-                                <a href="#delete-modal" class="action-btn" title="Verwijderen">
-                                    <span>🗑️</span>
-                                </a>
-                            </div>
-                        </div>
-                        <h3 class="quiz-title">Film & Series</h3>
-                        <p class="quiz-description">Van klassiekers tot moderne blockbusters</p>
-                        <div class="quiz-meta">
-                            <span class="meta-item">
-                                <span class="meta-icon">❓</span>
-                                12 vragen
-                            </span>
-                            <span class="meta-item">
-                                <span class="meta-icon">👁️</span>
-                                67 views
-                            </span>
-                        </div>
-                        <div class="quiz-footer">
-                            <a href="quiz.html" class="btn-play">
-                                <span>Speel Quiz</span>
-                                <span class="arrow">→</span>
-                            </a>
-                            <a href="#questions-modal" class="btn-questions">Vragen Beheren</a>
-                        </div>
-                    </div>
 
                     <!-- Empty State Card -->
-                    <a href="#create-quiz-modal" class="quiz-card-empty">
+                    <a id="create-quiz2" class="quiz-card-empty">
                         <div class="empty-icon">+</div>
                         <div class="empty-text">Maak Nieuwe Quiz</div>
                     </a>
@@ -190,7 +57,7 @@
         <div class="modal-container" id="quizModal">
             <div class="modal-header">
                 <h2 class="modal-title">Nieuwe Quiz Maken</h2>
-                <a href="#" id="close-create-modal"class="modal-close">✕</a>
+                <a href="#" id="close-create-modal" class="modal-close">✕</a>
             </div>
             <form class="modal-form">
                 <div class="form-group">
@@ -208,16 +75,16 @@
                 <div class="form-group">
                     <label class="form-label" for="quiz-category">Categorie</label>
                     <select id="quiz-category" class="form-select">
-                        <option value="purple">Geschiedenis</option>
-                        <option value="teal">Wetenschap</option>
-                        <option value="pink">Pop Cultuur</option>
-                        <option value="orange">Sport</option>
-                        <option value="green">Geografie</option>
+                        <option value="Geschiedenis">Geschiedenis</option>
+                        <option value="Wetenschap">Wetenschap</option>
+                        <option value="Pop Cultuur">Pop Cultuur</option>
+                        <option value="Sport">Sport</option>
+                        <option value="Geografie">Geografie</option>
                     </select>
                 </div>
 
                 <div class="modal-actions">
-                    <a href="#" id="cancel-create-modal"class="btn btn-secondary">Annuleren</a>
+                    <a href="#" id="cancel-create-modal" class="btn btn-secondary">Annuleren</a>
                     <button id="create-quiz-btn" class="btn btn-primary">Quiz Aanmaken</button>
                 </div>
             </form>

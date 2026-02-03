@@ -13,6 +13,7 @@ export interface Quiz {
   title: string
   desc: string
   createdAt: number
+  category: string
   questions: Question[]
 }
 
