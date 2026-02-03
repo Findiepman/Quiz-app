@@ -10,6 +10,10 @@ const closeCreateModal = document.getElementById("close-create-modal")! as HTMLB
 const cancelCreateModal = document.getElementById("cancel-create-modal")! as HTMLButtonElement
 const createQuizBtn2 = document.getElementById("create-quiz2")! as HTMLButtonElement
 const quizCategory = document.getElementById("quiz-category")! as HTMLInputElement
+const deleteModal = document.getElementById("delete-modal")! as HTMLDivElement
+const cancelDeleteBtn = document.getElementById("delete-modal-cancel")! as HTMLButtonElement
+const confirmDeleteBtn = document.getElementById("delete-modal-confirm")! as HTMLButtonElement
+const closeDeleteBtn = document.getElementById("close-delete-modal")! as HTMLButtonElement
 
 
 
@@ -55,11 +59,11 @@ function renderQuizzes() {
         quizActions.className = "quiz-actions"
 
         const deleteBtn = document.createElement("button")
-        deleteBtn.addEventListener("click", () => deleteQuiz(quiz.id))
+        deleteBtn.addEventListener("click", () => openDeleteModal(quiz))
         deleteBtn.className = "action-btn"
         deleteBtn.textContent = "🗑️"
         quizActions.appendChild(deleteBtn)
-        
+
 
         const editBtn = document.createElement("button")
         editBtn.className = "action-btn"
@@ -74,7 +78,7 @@ function renderQuizzes() {
 
         const metaIcon1 = document.createElement("span")
         metaIcon1.className = "meta-item"
-        
+
 
         const metaItem2 = document.createElement("span")
         metaItem2.className = "meta-icon"
@@ -113,11 +117,11 @@ function renderQuizzes() {
 
 
 
-        
+
         header.appendChild(category)
         header.appendChild(quizActions)
         card.appendChild(header)
-        
+
 
 
 
@@ -136,7 +140,7 @@ function renderQuizzes() {
 
         card.addEventListener("click", (e) => {
             if (e.ctrlKey) {
-                deleteQuiz(quiz.id)
+                openDeleteModal(quiz)
                 console.log("wefwehk")
                 return
             }
@@ -151,6 +155,26 @@ function deleteQuiz(id: string) {
     saveQuizzes()
     renderQuizzes()
 }
+function openDeleteModal(quiz: any) {
+    function closeModal() {
+        deleteModal.style.display = "none"
+    }
+    deleteModal.style.display = "flex"
+
+    cancelDeleteBtn.addEventListener("click", () => closeModal())
+    closeDeleteBtn.addEventListener("click", () => closeModal())
+    deleteModal.addEventListener("click", (e) => {
+        if (e.target === deleteModal) closeModal()
+    })
+
+
+
+    confirmDeleteBtn.addEventListener("click", () => {
+        deleteQuiz(quiz.id)
+        closeModal()
+    })
+
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     renderQuizzes()
@@ -159,6 +183,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (quizName.value !== "" && quizDesc.value !== "") {
             createQuiz(quizName.value, quizDesc.value, quizCategory.value)
             createQuizModal.style.display = "none"
+            quizName.value = ""
+            quizDesc.value = ""
         }
         if (quizName.value == "") {
             quizName.placeholder = "You have to input a name"
