@@ -14,6 +14,21 @@ const deleteModal = document.getElementById("delete-modal")! as HTMLDivElement
 const cancelDeleteBtn = document.getElementById("delete-modal-cancel")! as HTMLButtonElement
 const confirmDeleteBtn = document.getElementById("delete-modal-confirm")! as HTMLButtonElement
 const closeDeleteBtn = document.getElementById("close-delete-modal")! as HTMLButtonElement
+const questionsModal = document.getElementById("questions-modal")! as HTMLDivElement
+const editQuizTitle = document.getElementById("quiz-title")! as HTMLParagraphElement
+const answerAInput = document.getElementById("answer-a")! as HTMLInputElement
+const answerBInput = document.getElementById("answer-b")! as HTMLInputElement
+const answerCInput = document.getElementById("answer-c")! as HTMLInputElement
+const answerDInput = document.getElementById("answer-d")! as HTMLInputElement
+const questionInput = document.getElementById("question")! as HTMLInputElement
+const createQuestionFinal = document.getElementById("create-question-final")! as HTMLButtonElement
+const correctAnswer = document.getElementById("correct-answer")! as HTMLSelectElement
+const closeQuestionModal = document.getElementById("close-question-modal")! as HTMLButtonElement
+const cancelQuestionModal = document.getElementById("cancel-question-modal")! as HTMLButtonElement
+
+
+let currentQuizId: string | null = null
+
 
 
 
@@ -68,6 +83,7 @@ function renderQuizzes() {
         const editBtn = document.createElement("button")
         editBtn.className = "action-btn"
         editBtn.textContent = "✏️"
+        editBtn.addEventListener("click", () => openEditModal(quiz.id))
         quizActions.appendChild(editBtn)
 
         const quizMeta = document.createElement("div")
@@ -84,19 +100,12 @@ function renderQuizzes() {
         metaItem2.className = "meta-icon"
         metaItem2.textContent = "❓"
         const span2 = document.createElement("span")
-        span2.textContent = "15 vragen"
+        span2.textContent = `${quiz.questions.length} Questions`
 
         const metaIcon2 = document.createElement("span")
         metaIcon2.className = "meta-item"
 
-        const metaItem1 = document.createElement("span")
-        metaItem1.className = "meta-icon"
-        metaItem1.textContent = "👁️"
-        const span1 = document.createElement("span")
-        span1.textContent = "45 views"
-
-        metaItem1.appendChild(span1)
-        metaIcon2.appendChild(metaItem1)
+        
         span.appendChild(metaIcon2)
         metaItem2.appendChild(span2)
         metaIcon1.appendChild(metaItem2)
@@ -150,10 +159,98 @@ function renderQuizzes() {
 
     )
 }
+
+
+function createQuestion(question: string, Aa: string, Ab: string, Ac: string, Ad: string, correct: string) {
+    if (!currentQuizId) { return console.error("No quiz selected!") }
+
+    const quiz: any = state.quizzes.find(q => q.id === currentQuizId)
+    if (question && Aa && Ab && Ac && Ad && correct) {
+        const newQuestion = {
+            id: Date.now().toString(),
+            question: question,
+            options: [Aa, Ab, Ac, Ad],
+            correctAnswer: correct
+        }
+        quiz.questions.push(newQuestion)
+        saveQuizzes()
+        renderQuestions()
+        renderQuizzes();
+    }
+
+
+}
+function renderQuestions() {
+    const grid = document.getElementById("question-grid")!;
+    grid.innerHTML = "";
+
+    // Haal de huidige quiz op
+    const quiz = state.quizzes.find(q => q.id === currentQuizId)!;
+
+    // Loop door alle vragen
+    quiz.questions.forEach((question, index) => {
+        const card = document.createElement("div");
+        card.className = "question-item";
+
+        // Vraagnummer
+        const questionNumber = document.createElement("div");
+        questionNumber.className = "question-number";
+        questionNumber.textContent = `${index + 1}`;
+        card.appendChild(questionNumber);
+
+        const content = document.createElement("div");
+        content.className = "question-content";
+
+        // Vraagtekst
+        const textPreview = document.createElement("div");
+        textPreview.className = "question-text-preview";
+        textPreview.textContent = question.question;
+
+        // buttons
+        const actions = document.createElement("div")
+        actions.className = "question-actions"
+
+        const deleteBtn = document.createElement("button")
+        deleteBtn.className = "action-btn-sm danger"
+        deleteBtn.textContent = "🗑️"
+        actions.appendChild(deleteBtn)
+
+
+        // Antwoorden
+        const answerList = document.createElement("div");
+        answerList.className = "question-answers-preview";
+
+        question.options.forEach((opt, i) => {
+            const answerTag = document.createElement("span");
+            answerTag.className = "answer-tag";
+
+            // Markeer correct antwoord
+            if (question.correctAnswer === ["A", "B", "C", "D"][i]) {
+                answerTag.classList.add("correct-answer");
+            }
+
+            answerTag.textContent = opt;
+            answerList.appendChild(answerTag);
+        });
+
+        
+        content.appendChild(textPreview);
+        content.appendChild(answerList);
+        content.appendChild(actions)
+        card.appendChild(content);
+        grid.appendChild(card);
+    });
+}
+
 function deleteQuiz(id: string) {
     state.quizzes = state.quizzes.filter(h => h.id !== id)
     saveQuizzes()
     renderQuizzes()
+}
+function openEditModal(quizID: string) {
+    questionsModal.style.display = "flex"
+    currentQuizId = quizID
+    renderQuestions()
 }
 function openDeleteModal(quiz: any) {
     function closeModal() {
@@ -175,6 +272,9 @@ function openDeleteModal(quiz: any) {
     })
 
 }
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     renderQuizzes()
@@ -220,6 +320,20 @@ document.addEventListener("DOMContentLoaded", () => {
     modalOverlay.addEventListener("click", () => {
         createQuizModal.style.display = "none"
     })
+    createQuestionFinal.addEventListener("click", () => {
+        createQuestion(questionInput.value, answerAInput.value, answerBInput.value, answerCInput.value, answerDInput.value, correctAnswer.value)
+        questionsModal.style.display = "none"
+        questionInput.value = ""
+        answerAInput.value = ""
+        answerBInput.value = ""
+        answerCInput.value = ""
+        answerDInput.value = ""
+        correctAnswer.value = "A"
+    }
+
+    )
+    closeQuestionModal.addEventListener("click", () => questionsModal.style.display = "none")
+    cancelQuestionModal.addEventListener("click", () => questionsModal.style.display = "none")
 })
 
 renderQuizzes()
