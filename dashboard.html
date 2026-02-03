@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - QuizMaster</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="dashboard-page">
     <div class="grain-overlay"></div>
-    
+
     <header class="main-header">
         <div class="logo">
             <span class="logo-icon">◆</span>
@@ -28,7 +32,7 @@
                     <h1 class="dashboard-title">Mijn Quizzen</h1>
                     <p class="dashboard-subtitle">Maak en beheer je eigen quizzen</p>
                 </div>
-                <a href="#create-quiz-modal" class="btn btn-primary">
+                <a id="Quiz-create-btn" class="btn btn-primary">
                     <span class="btn-icon">+</span>
                     Nieuwe Quiz
                 </a>
@@ -44,7 +48,7 @@
                         <div class="stat-label">Totaal Quizzen</div>
                     </div>
                 </div>
-                
+
                 <div class="stat-card">
                     <div class="stat-icon-wrapper teal">
                         <span class="stat-icon">❓</span>
@@ -54,7 +58,7 @@
                         <div class="stat-label">Totaal Vragen</div>
                     </div>
                 </div>
-                
+
                 <div class="stat-card">
                     <div class="stat-icon-wrapper pink">
                         <span class="stat-icon">👥</span>
@@ -183,22 +187,24 @@
     <!-- Modal: Create Quiz -->
     <div id="create-quiz-modal" class="modal">
         <div class="modal-overlay"></div>
-        <div class="modal-container">
+        <div class="modal-container" id="quizModal">
             <div class="modal-header">
                 <h2 class="modal-title">Nieuwe Quiz Maken</h2>
-                <a href="#" class="modal-close">✕</a>
+                <a href="#" id="close-create-modal"class="modal-close">✕</a>
             </div>
             <form class="modal-form">
                 <div class="form-group">
                     <label class="form-label" for="quiz-name">Quiz Naam</label>
-                    <input type="text" id="quiz-name" class="form-input" placeholder="Bijvoorbeeld: Wereldgeschiedenis" required>
+                    <input type="text" id="quiz-name" class="form-input" placeholder="Bijvoorbeeld: Wereldgeschiedenis"
+                        required>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label" for="quiz-description">Beschrijving</label>
-                    <textarea id="quiz-description" class="form-textarea" rows="3" placeholder="Korte beschrijving van de quiz..."></textarea>
+                    <textarea id="quiz-description" class="form-textarea" rows="3"
+                        placeholder="Korte beschrijving van de quiz..."></textarea>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label" for="quiz-category">Categorie</label>
                     <select id="quiz-category" class="form-select">
@@ -209,10 +215,10 @@
                         <option value="green">Geografie</option>
                     </select>
                 </div>
-                
+
                 <div class="modal-actions">
-                    <a href="#" class="btn btn-secondary">Annuleren</a>
-                    <button type="submit" class="btn btn-primary">Quiz Aanmaken</button>
+                    <a href="#" id="cancel-create-modal"class="btn btn-secondary">Annuleren</a>
+                    <button id="create-quiz-btn" class="btn btn-primary">Quiz Aanmaken</button>
                 </div>
             </form>
         </div>
@@ -231,12 +237,13 @@
                     <label class="form-label" for="edit-quiz-name">Quiz Naam</label>
                     <input type="text" id="edit-quiz-name" class="form-input" value="Romeinse Rijk" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label" for="edit-quiz-description">Beschrijving</label>
-                    <textarea id="edit-quiz-description" class="form-textarea" rows="3">Test je kennis over het oude Rome en haar keizers</textarea>
+                    <textarea id="edit-quiz-description" class="form-textarea"
+                        rows="3">Test je kennis over het oude Rome en haar keizers</textarea>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label" for="edit-quiz-category">Categorie</label>
                     <select id="edit-quiz-category" class="form-select">
@@ -247,7 +254,7 @@
                         <option value="green">Geografie</option>
                     </select>
                 </div>
-                
+
                 <div class="modal-actions">
                     <a href="#" class="btn btn-secondary">Annuleren</a>
                     <button type="submit" class="btn btn-primary">Opslaan</button>
@@ -267,7 +274,7 @@
                 </div>
                 <a href="#" class="modal-close">✕</a>
             </div>
-            
+
             <div class="questions-header">
                 <a href="#add-question" class="btn btn-primary btn-sm">
                     <span class="btn-icon">+</span>
@@ -320,7 +327,7 @@
                             <label class="form-label">Vraag</label>
                             <input type="text" class="form-input" placeholder="Typ je vraag hier...">
                         </div>
-                        
+
                         <div class="answers-grid-form">
                             <div class="form-group">
                                 <label class="form-label">Antwoord A</label>
@@ -339,7 +346,7 @@
                                 <input type="text" class="form-input" placeholder="Antwoord D">
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label class="form-label">Correct Antwoord</label>
                             <select class="form-select">
@@ -349,7 +356,7 @@
                                 <option value="D">D</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-actions">
                             <a href="#" class="btn btn-secondary">Annuleren</a>
                             <button type="submit" class="btn btn-primary">Vraag Toevoegen</button>
@@ -397,5 +404,7 @@
             </div>
         </div>
     </footer>
+    <script type="module" src="dist/app.js"></script>
 </body>
+
 </html>
