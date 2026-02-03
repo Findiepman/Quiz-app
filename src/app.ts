@@ -214,6 +214,10 @@ function renderQuestions() {
         deleteBtn.className = "action-btn-sm danger"
         deleteBtn.textContent = "🗑️"
         actions.appendChild(deleteBtn)
+        const editBtn = document.createElement("button")
+        editBtn.className = "action-btn-sm"
+        editBtn.textContent = "✏️"
+        actions.appendChild(editBtn)
 
 
         // Antwoorden
@@ -226,17 +230,17 @@ function renderQuestions() {
 
             // Markeer correct antwoord
             if (question.correctAnswer === ["A", "B", "C", "D"][i]) {
-                answerTag.classList.add("correct-answer");
+                answerTag.classList.add("answer-tag-correct");
             }
 
             answerTag.textContent = opt;
             answerList.appendChild(answerTag);
         });
 
-        
+        content.appendChild(actions)
         content.appendChild(textPreview);
         content.appendChild(answerList);
-        content.appendChild(actions)
+        
         card.appendChild(content);
         grid.appendChild(card);
     });

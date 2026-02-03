@@ -4,31 +4,31 @@
     --primary-dark: #7c3aed;
     --secondary: #14b8a6;
     --accent: #ec4899;
-    
+
     --purple: #8b5cf6;
     --teal: #14b8a6;
     --pink: #ec4899;
     --orange: #f97316;
     --green: #10b981;
-    
+
     --danger: #ef4444;
     --success: #10b981;
     --warning: #f59e0b;
-    
+
     --bg-main: #fafafa;
     --bg-card: #ffffff;
     --bg-dark: #0f172a;
     --bg-overlay: rgba(15, 23, 42, 0.5);
-    
+
     --text-primary: #0f172a;
     --text-secondary: #64748b;
     --text-light: #94a3b8;
-    
+
     --border-color: #e2e8f0;
     --border-radius: 16px;
     --border-radius-lg: 24px;
     --spacing: 1.5rem;
-    
+
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
     --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -89,6 +89,7 @@ body {
         transform: translateY(-100%);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -111,8 +112,15 @@ body {
 }
 
 @keyframes rotate {
-    0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(90deg); }
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(90deg);
+    }
 }
 
 .main-nav {
@@ -161,8 +169,15 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .header-content h1 {
@@ -271,15 +286,24 @@ body {
     animation: slideInUp 0.6s ease-out backwards;
 }
 
-.stat-card:nth-child(1) { animation-delay: 0.1s; }
-.stat-card:nth-child(2) { animation-delay: 0.2s; }
-.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.stat-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.stat-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
 
 @keyframes slideInUp {
     from {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -597,6 +621,7 @@ body {
         opacity: 0;
         transform: translateY(40px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -776,7 +801,7 @@ body {
     color: var(--text-secondary);
 }
 
-.answer-tag.correct {
+.answer-tag-correct {
     background: rgba(16, 185, 129, 0.1);
     border-color: var(--success);
     color: var(--success);
@@ -787,6 +812,7 @@ body {
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    justify-content: end;
 }
 
 .action-btn-sm {
@@ -894,8 +920,15 @@ body {
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
 .empty-title {
@@ -996,8 +1029,15 @@ body {
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
 }
 
 .hero-title {
@@ -1069,8 +1109,15 @@ body {
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
 .card-icon {
@@ -1196,7 +1243,7 @@ body {
     .hero-section {
         grid-template-columns: 1fr;
     }
-    
+
     .quizzes-grid {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     }
@@ -1206,47 +1253,47 @@ body {
     .main-header {
         padding: 1rem 1.5rem;
     }
-    
+
     .dashboard-main {
         padding: 2rem 1.5rem;
     }
-    
+
     .dashboard-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 1.5rem;
     }
-    
+
     .stats-overview {
         grid-template-columns: 1fr;
     }
-    
+
     .quizzes-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .hero-title {
         font-size: 3rem;
     }
-    
+
     .features-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .stats-container {
         flex-direction: column;
         gap: 2rem;
     }
-    
+
     .stat-divider {
         width: 80%;
         height: 2px;
     }
-    
+
     .answers-grid-form {
         grid-template-columns: 1fr;
     }
-    
+
     .modal-container {
         max-height: 95vh;
     }

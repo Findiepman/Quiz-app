@@ -137,9 +137,9 @@
             <div class="modal-header">
                 <div>
                     <h2 class="modal-title">Vragen Beheren</h2>
-                    <p class="modal-subtitle">Romeinse Rijk</p>
+                    <p id="quiz-title" class="modal-subtitle">Romeinse Rijk</p>
                 </div>
-                <a href="#" class="modal-close">✕</a>
+                <a id="close-question-modal" class="modal-close">✕</a>
             </div>
 
             <div class="questions-header">
@@ -150,40 +150,10 @@
             </div>
 
             <div class="questions-list">
-                <!-- Question Item 1 -->
-                <div class="question-item">
-                    <div class="question-number">1</div>
-                    <div class="question-content">
-                        <div class="question-text-preview">Wie was de eerste keizer van het Romeinse Rijk?</div>
-                        <div class="question-answers-preview">
-                            <span class="answer-tag">A. Julius Caesar</span>
-                            <span class="answer-tag correct">B. Augustus</span>
-                            <span class="answer-tag">C. Nero</span>
-                            <span class="answer-tag">D. Tiberius</span>
-                        </div>
-                    </div>
-                    <div class="question-actions">
-                        <a href="#edit-question" class="action-btn-sm">✏️</a>
-                        <a href="#delete-question" class="action-btn-sm danger">🗑️</a>
-                    </div>
-                </div>
+                <div id="question-grid">
+                    
 
-                <!-- Question Item 2 -->
-                <div class="question-item">
-                    <div class="question-number">2</div>
-                    <div class="question-content">
-                        <div class="question-text-preview">In welk jaar viel het West-Romeinse Rijk?</div>
-                        <div class="question-answers-preview">
-                            <span class="answer-tag">A. 410 n.Chr.</span>
-                            <span class="answer-tag">B. 455 n.Chr.</span>
-                            <span class="answer-tag correct">C. 476 n.Chr.</span>
-                            <span class="answer-tag">D. 500 n.Chr.</span>
-                        </div>
-                    </div>
-                    <div class="question-actions">
-                        <a href="#edit-question" class="action-btn-sm">✏️</a>
-                        <a href="#delete-question" class="action-btn-sm danger">🗑️</a>
-                    </div>
+
                 </div>
 
                 <!-- Add Question Form (Initially Hidden) -->
@@ -192,31 +162,31 @@
                     <form>
                         <div class="form-group">
                             <label class="form-label">Vraag</label>
-                            <input type="text" class="form-input" placeholder="Typ je vraag hier...">
+                            <input id="question" type="text" class="form-input" placeholder="Type je vraag hier...">
                         </div>
 
                         <div class="answers-grid-form">
                             <div class="form-group">
                                 <label class="form-label">Antwoord A</label>
-                                <input type="text" class="form-input" placeholder="Antwoord A">
+                                <input id="answer-a" type="text" class="form-input" placeholder="Antwoord A">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Antwoord B</label>
-                                <input type="text" class="form-input" placeholder="Antwoord B">
+                                <input id="answer-b" type="text" class="form-input" placeholder="Antwoord B">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Antwoord C</label>
-                                <input type="text" class="form-input" placeholder="Antwoord C">
+                                <input type="text" id="answer-c" class="form-input" placeholder="Antwoord C">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Antwoord D</label>
-                                <input type="text" class="form-input" placeholder="Antwoord D">
+                                <input type="text" id="answer-d" class="form-input" placeholder="Antwoord D">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Correct Antwoord</label>
-                            <select class="form-select">
+                            <select id="correct-answer" class="form-select">
                                 <option value="A">A</option>
                                 <option value="B">B</option>
                                 <option value="C">C</option>
@@ -225,8 +195,9 @@
                         </div>
 
                         <div class="form-actions">
-                            <a href="#" class="btn btn-secondary">Annuleren</a>
-                            <button type="submit" class="btn btn-primary">Vraag Toevoegen</button>
+                            <a id="cancel-question-modal" class="btn btn-secondary">Annuleren</a>
+                            <button id="create-question-final" type="submit" class="btn btn-primary">Vraag
+                                Toevoegen</button>
                         </div>
                     </form>
                 </div>
@@ -246,11 +217,11 @@
                 <p class="delete-warning">
                     Weet je zeker dat je deze quiz wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.
                 </p>
-                
+
             </div>
             <div class="modal-actions">
                 <a id="delete-modal-cancel" class="btn btn-secondary">Annuleren</a>
-                <button id="delete-modal-confirm"class="btn btn-danger">Verwijderen</button>
+                <button id="delete-modal-confirm" class="btn btn-danger">Verwijderen</button>
             </div>
         </div>
     </div>
@@ -268,7 +239,7 @@
             </div>
         </div>
     </footer>
-    <script type="module" src="dist/app.js"></script>
+    <script type="module" src="dist/app.js" defer></script>
 </body>
 
 </html>

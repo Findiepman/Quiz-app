@@ -3,9 +3,10 @@ export type QuestionID = string
 
 export interface Question {
   id: QuestionID
-  text: string
+  question: string
   options: string[]
-  correctAnswerIndex: number
+  correctAnswer: string
+  index: number
 }
 
 export interface Quiz {
