@@ -14,7 +14,6 @@ const deleteModal = document.getElementById("delete-modal")! as HTMLDivElement
 const cancelDeleteBtn = document.getElementById("delete-modal-cancel")! as HTMLButtonElement
 const confirmDeleteBtn = document.getElementById("delete-modal-confirm")! as HTMLButtonElement
 const closeDeleteBtn = document.getElementById("close-delete-modal")! as HTMLButtonElement
-const questionsModal = document.getElementById("questions-modal")! as HTMLDivElement
 const editQuizTitle = document.getElementById("quiz-title")! as HTMLParagraphElement
 const answerAInput = document.getElementById("answer-a")! as HTMLInputElement
 const answerBInput = document.getElementById("answer-b")! as HTMLInputElement
@@ -25,7 +24,8 @@ const createQuestionFinal = document.getElementById("create-question-final")! as
 const correctAnswer = document.getElementById("correct-answer")! as HTMLSelectElement
 const closeQuestionModal = document.getElementById("close-question-modal")! as HTMLButtonElement
 const cancelQuestionModal = document.getElementById("cancel-question-modal")! as HTMLButtonElement
-const questionOverlay = questionsModal.querySelector(".question-overlay-modal")! as HTMLDivElement
+const questionsModal = document.getElementById("questions-modal")! as HTMLDivElement
+const questionOverlay = questionsModal.querySelector(".question-overlay-modal")! 
 
 
 let currentQuizId: string | null = null
@@ -352,6 +352,7 @@ document.addEventListener("DOMContentLoaded", () => {
         questionsModal.style.display = "none"
         console.log("ewfhwefjewjfweufhweiufh")
     })
+    
 
     createQuestionFinal.addEventListener("click", () => {
         createQuestion(questionInput.value, answerAInput.value, answerBInput.value, answerCInput.value, answerDInput.value, correctAnswer.value)
@@ -371,5 +372,5 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target === questionOverlay) questionsModal.style.display = "none"
     })
 })
-
+console.log(questionOverlay)
 renderQuizzes()
