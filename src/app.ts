@@ -24,7 +24,13 @@ const createQuestionFinal = document.getElementById("create-question-final")! as
 const correctAnswer = document.getElementById("correct-answer")! as HTMLSelectElement
 const closeQuestionModal = document.getElementById("close-question-modal")! as HTMLButtonElement
 const cancelQuestionModal = document.getElementById("cancel-question-modal")! as HTMLButtonElement
-const deleteModalOverlay = document.getElementById("delete-modal-overlay")
+const deleteModalOverlay = document.getElementById("delete-modal-overlay")! as HTMLDivElement
+const deleteQuestionOverlay = document.getElementById("delete-modal-overlay-question")! as HTMLDivElement
+const deleteQuestionModal = document.getElementById("delete-modal-question")! as HTMLDivElement
+const closeDeleteModal = document.getElementById("close-delete-modal-question")! as HTMLButtonElement
+closeDeleteModal.style.border = "none"
+const cancelDeleteModal = document.getElementById("delete-modal-cancel-question")! as HTMLButtonElement
+const confirmDeleteQuestion = document.getElementById("delete-modal-confirm-question")! as HTMLButtonElement
 
 const questionsModal = document.getElementById("questions-modal")! as HTMLDivElement
 const questionOverlay = document.getElementById("question-overlay-modal")!
@@ -228,7 +234,7 @@ function renderQuestions() {
         deleteBtn.className = "action-btn-sm danger"
         deleteBtn.textContent = "🗑️"
         deleteBtn.addEventListener("click", () => {
-            deleteQuestion(question.id)
+            openDeleteQuestion(question)
             console.log("ewfuiwef")
         })
         actions.appendChild(deleteBtn)
@@ -277,6 +283,22 @@ function deleteQuestion(id: string) {
     renderQuizzes()
     renderQuestions()
 }
+function openDeleteQuestion(question: any) {
+    deleteQuestionModal.style.display = "flex"
+    
+
+    confirmDeleteQuestion.addEventListener("click", () => {
+        deleteQuestion(question.id)
+        deleteQuestionModal.style.display = "none"
+    })
+
+
+    deleteQuestionModal.addEventListener("click", (e) => {
+        if (e.target === deleteQuestionModal) deleteQuestionModal.style.display = "none"
+    })
+    cancelDeleteModal.addEventListener("click", () => deleteQuestionModal.style.display = "none")
+    closeDeleteModal.addEventListener("click", () => deleteQuestionModal.style.display = "none")
+}
 function openEditModal(quizID: string) {
     questionsModal.style.display = "flex"
     currentQuizId = quizID
@@ -294,9 +316,6 @@ function openDeleteModal(quiz: any) {
     deleteModal.addEventListener("click", (e) => {
         if (e.target === deleteModal) closeModal()
     })
-
-
-
     confirmDeleteBtn.addEventListener("click", () => {
         deleteQuiz(quiz.id)
         closeModal()
@@ -352,9 +371,11 @@ document.addEventListener("DOMContentLoaded", () => {
         createQuizModal.style.display = "none"
     })
     questionOverlay.addEventListener("click", (e) => {
-        if (e.target === e.currentTarget) questionsModal.style.display = "none"    })
-        
-    
+        if (e.target === e.currentTarget) questionsModal.style.display = "none"
+    })
+
+
+
 
 
     createQuestionFinal.addEventListener("click", () => {
@@ -373,7 +394,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cancelQuestionModal.addEventListener("click", () => questionsModal.style.display = "none")
 })
 
-    
+
 
 console.log(questionOverlay)
 renderQuizzes()
