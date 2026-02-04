@@ -24,8 +24,10 @@ const createQuestionFinal = document.getElementById("create-question-final")! as
 const correctAnswer = document.getElementById("correct-answer")! as HTMLSelectElement
 const closeQuestionModal = document.getElementById("close-question-modal")! as HTMLButtonElement
 const cancelQuestionModal = document.getElementById("cancel-question-modal")! as HTMLButtonElement
+const deleteModalOverlay = document.getElementById("delete-modal-overlay")
+
 const questionsModal = document.getElementById("questions-modal")! as HTMLDivElement
-const questionOverlay = questionsModal.querySelector(".question-overlay-modal")! 
+const questionOverlay = document.getElementById("question-overlay-modal")!
 
 
 let currentQuizId: string | null = null
@@ -288,6 +290,7 @@ function openDeleteModal(quiz: any) {
 
     cancelDeleteBtn.addEventListener("click", () => closeModal())
     closeDeleteBtn.addEventListener("click", () => closeModal())
+
     deleteModal.addEventListener("click", (e) => {
         if (e.target === deleteModal) closeModal()
     })
@@ -348,11 +351,11 @@ document.addEventListener("DOMContentLoaded", () => {
     modalOverlay.addEventListener("click", () => {
         createQuizModal.style.display = "none"
     })
-    questionOverlay.addEventListener("click", () => {
-        questionsModal.style.display = "none"
-        console.log("ewfhwefjewjfweufhweiufh")
-    })
+    questionOverlay.addEventListener("click", (e) => {
+        if (e.target === e.currentTarget) questionsModal.style.display = "none"    })
+        
     
+
 
     createQuestionFinal.addEventListener("click", () => {
         createQuestion(questionInput.value, answerAInput.value, answerBInput.value, answerCInput.value, answerDInput.value, correctAnswer.value)
@@ -368,9 +371,9 @@ document.addEventListener("DOMContentLoaded", () => {
     )
     closeQuestionModal.addEventListener("click", () => questionsModal.style.display = "none")
     cancelQuestionModal.addEventListener("click", () => questionsModal.style.display = "none")
-    questionOverlay.addEventListener("click", (e) => {
-        if (e.target === questionOverlay) questionsModal.style.display = "none"
-    })
 })
+
+    
+
 console.log(questionOverlay)
 renderQuizzes()
