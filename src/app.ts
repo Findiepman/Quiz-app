@@ -105,7 +105,7 @@ function renderQuizzes() {
         const metaIcon2 = document.createElement("span")
         metaIcon2.className = "meta-item"
 
-        
+
         span.appendChild(metaIcon2)
         metaItem2.appendChild(span2)
         metaIcon1.appendChild(metaItem2)
@@ -119,10 +119,16 @@ function renderQuizzes() {
         playQuiz.textContent = "Play Quiz →"
         quizFooter.appendChild(playQuiz)
 
-        const editQuestion = document.createElement("a")
+        const editQuestion = document.createElement("button")
         editQuestion.className = "btn-questions"
         editQuestion.textContent = "Edit Questions"
+        editQuestion.style.border = "none"
+        editQuestion.addEventListener("click", () => {
+            openEditModal(quiz.id)
+
+        })
         quizFooter.appendChild(editQuestion)
+
 
 
 
@@ -213,6 +219,10 @@ function renderQuestions() {
         const deleteBtn = document.createElement("button")
         deleteBtn.className = "action-btn-sm danger"
         deleteBtn.textContent = "🗑️"
+        deleteBtn.addEventListener("click", () => {
+            deleteQuestion(question.id)
+            console.log("ewfuiwef")
+        })
         actions.appendChild(deleteBtn)
         const editBtn = document.createElement("button")
         editBtn.className = "action-btn-sm"
@@ -240,7 +250,7 @@ function renderQuestions() {
         content.appendChild(actions)
         content.appendChild(textPreview);
         content.appendChild(answerList);
-        
+
         card.appendChild(content);
         grid.appendChild(card);
     });
@@ -250,6 +260,14 @@ function deleteQuiz(id: string) {
     state.quizzes = state.quizzes.filter(h => h.id !== id)
     saveQuizzes()
     renderQuizzes()
+}
+function deleteQuestion(id: string) {
+    const quiz = state.quizzes.find(q => q.id === currentQuizId)!;
+
+    quiz.questions = quiz.questions.filter(h => h.id !== id)
+    saveQuizzes()
+    renderQuizzes()
+    renderQuestions()
 }
 function openEditModal(quizID: string) {
     questionsModal.style.display = "flex"
