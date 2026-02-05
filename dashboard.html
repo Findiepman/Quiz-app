@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -29,12 +29,12 @@
         <div class="dashboard-container">
             <section class="dashboard-header">
                 <div class="header-content">
-                    <h1 class="dashboard-title">Mijn Quizzen</h1>
-                    <p class="dashboard-subtitle">Maak en beheer je eigen quizzen</p>
+                    <h1 class="dashboard-title">My Quizzes</h1>
+                    <p class="dashboard-subtitle">Create and manage your own quizzes</p>
                 </div>
                 <a id="Quiz-create-btn" class="btn btn-primary">
                     <span class="btn-icon">+</span>
-                    Nieuwe Quiz
+                    New Quiz
                 </a>
             </section>
             <section class="quizzes-section">
@@ -44,7 +44,7 @@
                     <!-- Empty State Card -->
                     <a id="create-quiz2" class="quiz-card-empty">
                         <div class="empty-icon">+</div>
-                        <div class="empty-text">Maak Nieuwe Quiz</div>
+                        <div class="empty-text">Create New Quiz</div>
                     </a>
                 </div>
             </section>
@@ -56,36 +56,36 @@
         <div class="modal-overlay"></div>
         <div class="modal-container" id="quizModal">
             <div class="modal-header">
-                <h2 class="modal-title">Nieuwe Quiz Maken</h2>
+                <h2 class="modal-title">Create New Quiz</h2>
                 <a href="#" id="close-create-modal" class="modal-close">✕</a>
             </div>
             <form class="modal-form">
                 <div class="form-group">
-                    <label class="form-label" for="quiz-name">Quiz Naam</label>
-                    <input type="text" id="quiz-name" class="form-input" placeholder="Bijvoorbeeld: Wereldgeschiedenis"
+                    <label class="form-label" for="quiz-name">Quiz Name</label>
+                    <input type="text" id="quiz-name" class="form-input" placeholder="e.g. World History"
                         required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="quiz-description">Beschrijving</label>
+                    <label class="form-label" for="quiz-description">Description</label>
                     <textarea id="quiz-description" class="form-textarea" rows="3"
-                        placeholder="Korte beschrijving van de quiz..."></textarea>
+                        placeholder="Short description of the quiz..."></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="quiz-category">Categorie</label>
+                    <label class="form-label" for="quiz-category">Category</label>
                     <select id="quiz-category" class="form-select">
-                        <option value="Geschiedenis">Geschiedenis</option>
-                        <option value="Wetenschap">Wetenschap</option>
-                        <option value="Pop Cultuur">Pop Cultuur</option>
-                        <option value="Sport">Sport</option>
-                        <option value="Geografie">Geografie</option>
+                        <option value="History">History</option>
+                        <option value="Science">Science</option>
+                        <option value="Pop Culture">Pop Culture</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Geography">Geography</option>
                     </select>
                 </div>
 
                 <div class="modal-actions">
-                    <a href="#" id="cancel-create-modal" class="btn btn-secondary">Annuleren</a>
-                    <button id="create-quiz-btn" class="btn btn-primary">Quiz Aanmaken</button>
+                    <a href="#" id="cancel-create-modal" class="btn btn-secondary">Cancel</a>
+                    <button id="create-quiz-btn" class="btn btn-primary">Create Quiz</button>
                 </div>
             </form>
         </div>
@@ -96,35 +96,35 @@
         <div class="modal-overlay"></div>
         <div class="modal-container">
             <div class="modal-header">
-                <h2 class="modal-title">Quiz Bewerken</h2>
+                <h2 class="modal-title">Edit Quiz</h2>
                 <a href="#" class="modal-close">✕</a>
             </div>
             <form class="modal-form">
                 <div class="form-group">
-                    <label class="form-label" for="edit-quiz-name">Quiz Naam</label>
-                    <input type="text" id="edit-quiz-name" class="form-input" value="Romeinse Rijk" required>
+                    <label class="form-label" for="edit-quiz-name">Quiz Name</label>
+                    <input type="text" id="edit-quiz-name" class="form-input" value="Roman Empire" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="edit-quiz-description">Beschrijving</label>
+                    <label class="form-label" for="edit-quiz-description">Description</label>
                     <textarea id="edit-quiz-description" class="form-textarea"
-                        rows="3">Test je kennis over het oude Rome en haar keizers</textarea>
+                        rows="3">Test your knowledge about ancient Rome and its emperors</textarea>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="edit-quiz-category">Categorie</label>
+                    <label class="form-label" for="edit-quiz-category">Category</label>
                     <select id="edit-quiz-category" class="form-select">
-                        <option value="purple" selected>Geschiedenis</option>
-                        <option value="teal">Wetenschap</option>
-                        <option value="pink">Pop Cultuur</option>
-                        <option value="orange">Sport</option>
-                        <option value="green">Geografie</option>
+                        <option value="purple" selected>History</option>
+                        <option value="teal">Science</option>
+                        <option value="pink">Pop Culture</option>
+                        <option value="orange">Sports</option>
+                        <option value="green">Geography</option>
                     </select>
                 </div>
 
                 <div class="modal-actions">
-                    <a href="#" class="btn btn-secondary">Annuleren</a>
-                    <button type="submit" class="btn btn-primary">Opslaan</button>
+                    <a href="#" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>
@@ -136,7 +136,7 @@
         <div class="modal-container">
             <div class="modal-header">
                 <div>
-                    <h2 class="modal-title">Vragen Beheren</h2>
+                    <h2 class="modal-title">Manage Questions</h2>
                     <p id="quiz-title" class="modal-subtitle"></p>
                 </div>
                 <a id="close-question-modal" class="modal-close">✕</a>
@@ -145,7 +145,7 @@
             <div class="questions-header">
                 <a href="#add-question" class="btn btn-primary btn-sm">
                     <span class="btn-icon">+</span>
-                    Vraag Toevoegen
+                    Add Question
                 </a>
             </div>
 
@@ -158,34 +158,34 @@
 
                 <!-- Add Question Form (Initially Hidden) -->
                 <div id="add-question" class="add-question-form">
-                    <h3 class="form-section-title">Nieuwe Vraag Toevoegen</h3>
+                    <h3 class="form-section-title">Add New Question</h3>
                     <form>
                         <div class="form-group">
-                            <label class="form-label">Vraag</label>
-                            <input id="question" type="text" class="form-input" placeholder="Type je vraag hier...">
+                            <label class="form-label">Question</label>
+                            <input id="question" type="text" class="form-input" placeholder="Type your question here...">
                         </div>
 
                         <div class="answers-grid-form">
                             <div class="form-group">
-                                <label class="form-label">Antwoord A</label>
-                                <input id="answer-a" type="text" class="form-input" placeholder="Antwoord A">
+                                <label class="form-label">Answer A</label>
+                                <input id="answer-a" type="text" class="form-input" placeholder="Answer A">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Antwoord B</label>
-                                <input id="answer-b" type="text" class="form-input" placeholder="Antwoord B">
+                                <label class="form-label">Answer B</label>
+                                <input id="answer-b" type="text" class="form-input" placeholder="Answer B">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Antwoord C</label>
-                                <input type="text" id="answer-c" class="form-input" placeholder="Antwoord C">
+                                <label class="form-label">Answer C</label>
+                                <input type="text" id="answer-c" class="form-input" placeholder="Answer C">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Antwoord D</label>
-                                <input type="text" id="answer-d" class="form-input" placeholder="Antwoord D">
+                                <label class="form-label">Answer D</label>
+                                <input type="text" id="answer-d" class="form-input" placeholder="Answer D">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Correct Antwoord</label>
+                            <label class="form-label">Correct Answer</label>
                             <select id="correct-answer" class="form-select">
                                 <option value="A">A</option>
                                 <option value="B">B</option>
@@ -195,9 +195,8 @@
                         </div>
 
                         <div class="form-actions">
-                            <a id="cancel-question-modal" class="btn btn-secondary">Annuleren</a>
-                            <button id="create-question-final" type="submit" class="btn btn-primary">Vraag
-                                Toevoegen</button>
+                            <a id="cancel-question-modal" class="btn btn-secondary">Cancel</a>
+                            <button id="create-question-final" type="submit" class="btn btn-primary">Add Question</button>
                         </div>
                     </form>
                 </div>
@@ -210,18 +209,18 @@
         <div class="delete-modal-overlay"></div>
         <div class="modal-container modal-small">
             <div class="modal-header">
-                <h2 class="modal-title">Quiz Verwijderen?</h2>
+                <h2 class="modal-title">Delete Quiz?</h2>
                 <a id="close-delete-modal" class="modal-close">✕</a>
             </div>
             <div class="modal-body">
                 <p class="delete-warning">
-                    Weet je zeker dat je deze quiz wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.
+                    Are you sure you want to delete this quiz? This action cannot be undone.
                 </p>
 
             </div>
             <div class="modal-actions">
-                <a id="delete-modal-cancel" class="btn btn-secondary">Annuleren</a>
-                <button id="delete-modal-confirm" class="btn btn-danger">Verwijderen</button>
+                <a id="delete-modal-cancel" class="btn btn-secondary">Cancel</a>
+                <button id="delete-modal-confirm" class="btn btn-danger">Delete</button>
             </div>
         </div>
     </div>
@@ -235,7 +234,7 @@
             </div>
             <div class="modal-body">
                 <p class="delete-warning">
-                    Are you sure you want to delete this question? This can't be undone
+                    Are you sure you want to delete this question? This can't be undone.
                 </p>
 
             </div>
@@ -253,7 +252,7 @@
                 <span class="footer-text">QuizMaster © 2026</span>
             </div>
             <div class="footer-links">
-                <a href="#" class="footer-link">Over</a>
+                <a href="#" class="footer-link">About</a>
                 <a href="#" class="footer-link">Privacy</a>
                 <a href="#" class="footer-link">Contact</a>
             </div>
