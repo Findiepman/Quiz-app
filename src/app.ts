@@ -126,6 +126,7 @@ function renderQuizzes() {
         const playQuiz = document.createElement("a")
         playQuiz.className = "btn-play"
         playQuiz.textContent = "Play Quiz →"
+        playQuiz.addEventListener("click", () => openQuiz(quiz.id))
         quizFooter.appendChild(playQuiz)
 
         const editQuestion = document.createElement("button")
@@ -194,6 +195,9 @@ function createQuestion(question: string, Aa: string, Ab: string, Ac: string, Ad
     }
 
 
+}
+function openQuiz(id: string) {
+    window.location.href = `quiz.html?id=${id}`
 }
 function renderQuestions() {
     const grid = document.getElementById("question-grid")!;
