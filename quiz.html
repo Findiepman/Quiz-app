@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz - QuizMaster</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="quiz-page">
     <div class="grain-overlay"></div>
-    
+
     <header class="main-header">
         <div class="logo">
             <span class="logo-icon">◆</span>
@@ -21,17 +25,116 @@
         </nav>
     </header>
 
-    <main class="quiz-play-area">
-        <div class="quiz-empty-state">
-            <div class="empty-icon-large">🎮</div>
-            <h1 class="empty-title">Klaar om te spelen?</h1>
-            <p class="empty-description">
-                Selecteer een quiz vanuit het dashboard om te beginnen met spelen.
-            </p>
-            <a href="dashboard.html" class="btn btn-primary">
-                Ga naar Dashboard
-                <span class="btn-arrow">→</span>
-            </a>
+    <main class="quiz-main">
+        <div class="quiz-container">
+            <!-- Sidebar -->
+            <div class="quiz-sidebar">
+                <div class="quiz-info-card">
+                    <h3 id="sidebar-quiz-title" class="quiz-info-title">Loading Quiz...</h3>
+                    <div class="quiz-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Category</span>
+                            <span id="sidebar-category" class="meta-value">-</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Total Questions</span>
+                            <span id="sidebar-total" class="meta-value">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-card">
+                    <h4 class="progress-title">Progress</h4>
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                    <div id="progress-text" class="progress-text">Question 0 of 0</div>
+                </div>
+
+                <div class="score-card">
+                    <div class="score-label">Current Score</div>
+                    <div id="score-value" class="score-value">0 / 0</div>
+                    <div id="score-percentage" class="score-percentage">0%</div>
+                </div>
+            </div>
+
+            <!-- Question Area -->
+            <div class="quiz-content">
+                <div id="question-card" class="question-card">
+                    <div class="question-header">
+                        <span id="question-number" class="question-number">Question 1</span>
+                        <span id="question-category" class="question-category">-</span>
+                    </div>
+
+                    <h2 id="question-text" class="question-text">
+                        Loading question...
+                    </h2>
+
+                    <div id="answers-grid" class="answers-grid">
+                        <!-- Answers will be inserted here -->
+                        <label class="answer-option">
+                            <input type="radio" name="answer" value="A">
+                            <div class="answer-card">
+                                <span class="answer-letter">A</span>
+                                <span id="answerA" class="answer-text">Answer A</span>
+                            </div>
+                        </label>
+
+                        <label class="answer-option">
+                            <input type="radio" name="answer" value="B">
+                            <div class="answer-card">
+                                <span class="answer-letter">B</span>
+                                <span id="answerB" class="answer-text">Answer B</span>
+                            </div>
+                        </label>
+
+                        <label class="answer-option">
+                            <input type="radio" name="answer" value="C">
+                            <div class="answer-card">
+                                <span class="answer-letter">C</span>
+                                <span id="answerC" class="answer-text">Answer C</span>
+                            </div>
+                        </label>
+
+                        <label class="answer-option">
+                            <input type="radio" name="answer" value="D">
+                            <div class="answer-card">
+                                <span class="answer-letter">D</span>
+                                <span id="answerD" class="answer-text">Answer D</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="question-actions">
+                        <button id="prev-btn" class="btn btn-secondary" disabled>
+                            ← Previous
+                        </button>
+                        <button id="next-btn" class="btn btn-primary">
+                            Next Question
+                            <span class="btn-arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Results Card (Hidden initially) -->
+                <div id="results-card" class="results-card" style="display: none;">
+                    <div class="results-icon">🎉</div>
+                    <h2 class="results-title">Quiz Complete!</h2>
+                    <div class="results-score">
+                        <div class="results-score-big">
+                            <span id="final-score">0</span>/<span id="final-total">0</span>
+                        </div>
+                        <div class="results-score-percent" id="final-percent">0%</div>
+                    </div>
+                    <div class="results-message" id="results-message">
+                        Great job!
+                    </div>
+                    <div class="results-actions">
+                        <a href="dashboard.html" class="btn btn-secondary">Back to Dashboard</a>
+                        <button id="retry-btn" class="btn btn-primary">Try Again</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -42,11 +145,15 @@
                 <span class="footer-text">QuizMaster © 2026</span>
             </div>
             <div class="footer-links">
-                <a href="#" class="footer-link">Over</a>
+                <a href="#" class="footer-link">About</a>
                 <a href="#" class="footer-link">Privacy</a>
                 <a href="#" class="footer-link">Contact</a>
             </div>
         </div>
     </footer>
+
+    <!-- You can add your quiz logic script here -->
+    <script type="module" src="dist/quiz.js"></script>
 </body>
+
 </html>
