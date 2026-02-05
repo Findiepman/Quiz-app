@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2015", // voor Array.find en andere ES6 features
+    "target": "ES2016", // voor Array.find en andere ES6 features
     "lib": [
-      "ES2015",
+      "ES2016",
       "DOM"
     ], // array methods + DOM types
     "module": "ES6", // moderne browser modules
