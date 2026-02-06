@@ -118,16 +118,23 @@
 
                 <!-- Results Card (Hidden initially) -->
                 <div id="results-card" class="results-card" style="display: none;">
+                    <div class="results-text-group">
+                        <h2 class="results-title">Quiz Complete!</h2>
+                        <div class="results-message" id="results-message">
+                            Great job!
+                        </div>
+                        <div id="final-time" class="results-time"></div>
+                    </div>
                     <div class="results-icon">🎉</div>
-                    <h2 class="results-title">Quiz Complete!</h2>
+                    <div class="results-review">
+                        <h3 class="review-title">Question Overview</h3>
+                        <div id="review-grid" class="review-grid"></div>
+                    </div>
                     <div class="results-score">
                         <div class="results-score-big">
                             <span id="final-score">0</span>/<span id="final-total">0</span>
                         </div>
                         <div class="results-score-percent" id="final-percent">0%</div>
-                    </div>
-                    <div class="results-message" id="results-message">
-                        Great job!
                     </div>
                     <div class="results-actions">
                         <a href="dashboard.html" class="btn btn-secondary">Back to Dashboard</a>
@@ -151,6 +158,21 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal: Question Review -->
+    <div id="review-modal" class="modal">
+        <div class="modal-overlay" id="review-overlay"></div>
+        <div class="modal-container modal-small">
+            <div class="modal-header">
+                <h2 class="modal-title">Question Review</h2>
+                <button id="close-review-modal" class="modal-close">✕</button>
+            </div>
+            <div class="modal-body">
+                <p id="review-question-text" class="question-text-preview" style="font-size: 1.2rem; margin-bottom: 1rem; line-height: 1.4;"></p>
+                <div id="review-options-grid" class="review-options-list" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- You can add your quiz logic script here -->
     <script type="module" src="dist/quiz.js"></script>
