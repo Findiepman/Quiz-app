@@ -25,6 +25,10 @@ const sidebarCategory = document.getElementById("sidebar-category")!;
 const sidebarTotal = document.getElementById("sidebar-total")!;
 const progressFill = document.getElementById("progress-fill")!;
 const progressText = document.getElementById("progress-text")!;
+const reviewModal = document.getElementById("review-modal")!;
+const reviewOverlay = document.getElementById("review-overlay")!;
+const closeReviewBtn = document.getElementById("close-review-modal")!;
+
 
 // Quiz State
 let quizQuestions: Question[] = [];
@@ -33,6 +37,7 @@ let correctlyAnsweredIds = new Set<string>();
 let isCurrentQuestionAnswered = false;
 let userAnswers = new Map<string, number>();
 let shuffledOptionsMap = new Map<string, { text: string, originalIndex: number }[]>();
+let startTime = 0;
 
 // Helper to shuffle array
 function shuffleArray<T>(array: T[]): T[] {
@@ -59,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Prepare Questions (Shuffle)
     quizQuestions = shuffleArray([...quiz.questions]);
+    startTime = Date.now();
 
     // Initial Render
     renderQuestion();
@@ -86,6 +92,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (retryBtn) {
         retryBtn.addEventListener("click", () => window.location.reload());
     }
+
+    // Modal Listeners
+    closeReviewBtn.addEventListener("click", () => reviewModal.style.display = "none");
+    reviewOverlay.addEventListener("click", () => reviewModal.style.display = "none");
 });
 
 function renderQuestion() {
@@ -193,16 +203,79 @@ function updateScoreDisplay() {
 
 function finishQuiz() {
     questionCard.style.display = "none";
-    resultsCard.style.display = "flex";
+    resultsCard.style.display = "grid";
 
     const finalScore = document.getElementById("final-score")!;
     const finalTotal = document.getElementById("final-total")!;
     const finalPercent = document.getElementById("final-percent")!;
+    const finalTime = document.getElementById("final-time")!;
+    const reviewGrid = document.getElementById("review-grid")!;
 
     const score = correctlyAnsweredIds.size;
     const total = quizQuestions.length;
 
+    // Calculate Time
+    const totalSeconds = Math.floor((Date.now() - startTime) / 1000);
+    const mins = Math.floor(totalSeconds / 60);
+    const secs = totalSeconds % 60;
+    finalTime.textContent = `Time: ${mins}:${secs.toString().padStart(2, '0')}`;
+
     finalScore.textContent = score.toString();
     finalTotal.textContent = total.toString();
     finalPercent.textContent = `${Math.round((score / total) * 100)}%`;
+
+    // Generate Overview
+    reviewGrid.innerHTML = "";
+    quizQuestions.forEach((q, index) => {
+        const isCorrect = correctlyAnsweredIds.has(q.id);
+        const item = document.createElement("div");
+        item.className = `review-item ${isCorrect ? 'correct' : 'wrong'}`;
+        item.innerHTML = `
+            <span class="review-number">${index + 1}</span>
+            <span class="review-icon">${isCorrect ? '✔' : '✖'}</span>
+        `;
+        item.title = "Click to view details";
+        item.addEventListener("click", () => openReviewModal(index));
+        reviewGrid.appendChild(item);
+    });
+}
+
+function openReviewModal(index: number) {
+    const qText = document.getElementById("review-question-text")!;
+    const optionsGrid = document.getElementById("review-options-grid")!;
+
+    const question = quizQuestions[index];
+    const options = shuffledOptionsMap.get(question.id)!;
+    const userIdx = userAnswers.get(question.id);
+
+    // Determine correct index
+    const letterMap: { [key: string]: number } = { "A": 0, "B": 1, "C": 2, "D": 3 };
+    const correctOriginalIndex = letterMap[question.correctAnswer];
+
+    qText.textContent = question.question;
+    optionsGrid.innerHTML = "";
+
+    options.forEach((opt, i) => {
+        const div = document.createElement("div");
+        div.className = "review-modal-option";
+
+        let icon = "";
+
+        // Highlight logic
+        if (opt.originalIndex === correctOriginalIndex) {
+            div.classList.add("correct");
+            icon = "✔";
+        } else if (i === userIdx) {
+            div.classList.add("wrong");
+            icon = "✖";
+        }
+
+        div.innerHTML = `
+            <span>${opt.text}</span>
+            <span>${icon}</span>
+        `;
+        optionsGrid.appendChild(div);
+    });
+
+    reviewModal.style.display = "flex";
 }
