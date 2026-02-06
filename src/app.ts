@@ -35,9 +35,22 @@ const confirmDeleteQuestion = document.getElementById("delete-modal-confirm-ques
 const questionsModal = document.getElementById("questions-modal")! as HTMLDivElement
 const questionOverlay = document.getElementById("question-overlay-modal")!
 
+// Edit Question Modal Elements
+const editQuestionModal = document.getElementById("edit-question-modal")! as HTMLDivElement
+const editQuestionOverlay = document.getElementById("edit-question-overlay")! as HTMLDivElement
+const closeEditQuestionBtn = document.getElementById("close-edit-question-modal")! as HTMLButtonElement
+const cancelEditQuestionBtn = document.getElementById("cancel-edit-question-modal")! as HTMLButtonElement
+const saveEditQuestionBtn = document.getElementById("save-edit-question-btn")! as HTMLButtonElement
+
+const editQuestionInput = document.getElementById("edit-question-input")! as HTMLInputElement
+const editAnswerAInput = document.getElementById("edit-answer-a")! as HTMLInputElement
+const editAnswerBInput = document.getElementById("edit-answer-b")! as HTMLInputElement
+const editAnswerCInput = document.getElementById("edit-answer-c")! as HTMLInputElement
+const editAnswerDInput = document.getElementById("edit-answer-d")! as HTMLInputElement
+const editCorrectAnswerInput = document.getElementById("edit-correct-answer")! as HTMLSelectElement
 
 let currentQuizId: string | null = null
-
+let currentQuestionIdForEdit: string | null = null
 
 
 
@@ -125,7 +138,7 @@ function renderQuizzes() {
         quizFooter.className = "quiz-footer"
         const playQuiz = document.createElement("a")
         playQuiz.className = "btn-play"
-        playQuiz.textContent = "Play Quiz →"
+        playQuiz.textContent = "Play Quiz"
         playQuiz.addEventListener("click", () => openQuiz(quiz.id))
         quizFooter.appendChild(playQuiz)
 
@@ -245,6 +258,7 @@ function renderQuestions() {
         const editBtn = document.createElement("button")
         editBtn.className = "action-btn-sm"
         editBtn.textContent = "✏️"
+        editBtn.addEventListener("click", () => openEditQuestion(question))
         actions.appendChild(editBtn)
 
 
@@ -258,18 +272,18 @@ function renderQuestions() {
 
             // Markeer correct antwoord
             if (question.correctAnswer === ["A", "B", "C", "D"][i]) {
-                answerTag.classList.add("answer-tag-correct");
+                answerTag.classList.add("correct");
             }
 
             answerTag.textContent = opt;
             answerList.appendChild(answerTag);
         });
 
-        content.appendChild(actions)
         content.appendChild(textPreview);
         content.appendChild(answerList);
 
         card.appendChild(content);
+        card.appendChild(actions);
         grid.appendChild(card);
     });
 }
@@ -289,7 +303,7 @@ function deleteQuestion(id: string) {
 }
 function openDeleteQuestion(question: any) {
     deleteQuestionModal.style.display = "flex"
-    
+
 
     confirmDeleteQuestion.addEventListener("click", () => {
         deleteQuestion(question.id)
@@ -325,6 +339,18 @@ function openDeleteModal(quiz: any) {
         closeModal()
     })
 
+}
+
+function openEditQuestion(question: any) {
+    currentQuestionIdForEdit = question.id
+    editQuestionInput.value = question.question
+    editAnswerAInput.value = question.options[0]
+    editAnswerBInput.value = question.options[1]
+    editAnswerCInput.value = question.options[2]
+    editAnswerDInput.value = question.options[3]
+    editCorrectAnswerInput.value = question.correctAnswer
+
+    editQuestionModal.style.display = "flex"
 }
 
 
@@ -396,6 +422,32 @@ document.addEventListener("DOMContentLoaded", () => {
     )
     closeQuestionModal.addEventListener("click", () => questionsModal.style.display = "none")
     cancelQuestionModal.addEventListener("click", () => questionsModal.style.display = "none")
+
+    // Edit Question Modal Listeners
+    saveEditQuestionBtn.addEventListener("click", () => {
+        if (currentQuizId && currentQuestionIdForEdit) {
+            const quiz = state.quizzes.find(q => q.id === currentQuizId)
+            if (quiz) {
+                const question = quiz.questions.find(q => q.id === currentQuestionIdForEdit)
+                if (question) {
+                    question.question = editQuestionInput.value
+                    question.options = [
+                        editAnswerAInput.value,
+                        editAnswerBInput.value,
+                        editAnswerCInput.value,
+                        editAnswerDInput.value
+                    ]
+                    question.correctAnswer = editCorrectAnswerInput.value
+                    saveQuizzes()
+                    renderQuestions()
+                    editQuestionModal.style.display = "none"
+                }
+            }
+        }
+    })
+    closeEditQuestionBtn.addEventListener("click", () => editQuestionModal.style.display = "none")
+    cancelEditQuestionBtn.addEventListener("click", () => editQuestionModal.style.display = "none")
+    editQuestionOverlay.addEventListener("click", () => editQuestionModal.style.display = "none")
 })
 
 
