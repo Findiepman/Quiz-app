@@ -1,4 +1,4 @@
-import { saveQuizzes, saveSession, clearSession, state } from "./state.js";
+import { saveQuizzes, state } from "./state.js";
 
 const createQuizBtn = document.getElementById("create-quiz-btn")! as HTMLButtonElement
 const quizName = document.getElementById("quiz-name")! as HTMLInputElement
@@ -14,7 +14,6 @@ const deleteModal = document.getElementById("delete-modal")! as HTMLDivElement
 const cancelDeleteBtn = document.getElementById("delete-modal-cancel")! as HTMLButtonElement
 const confirmDeleteBtn = document.getElementById("delete-modal-confirm")! as HTMLButtonElement
 const closeDeleteBtn = document.getElementById("close-delete-modal")! as HTMLButtonElement
-const editQuizTitle = document.getElementById("quiz-title")! as HTMLParagraphElement
 const answerAInput = document.getElementById("answer-a")! as HTMLInputElement
 const answerBInput = document.getElementById("answer-b")! as HTMLInputElement
 const answerCInput = document.getElementById("answer-c")! as HTMLInputElement
@@ -24,8 +23,6 @@ const createQuestionFinal = document.getElementById("create-question-final")! as
 const correctAnswer = document.getElementById("correct-answer")! as HTMLSelectElement
 const closeQuestionModal = document.getElementById("close-question-modal")! as HTMLButtonElement
 const cancelQuestionModal = document.getElementById("cancel-question-modal")! as HTMLButtonElement
-const deleteModalOverlay = document.getElementById("delete-modal-overlay")! as HTMLDivElement
-const deleteQuestionOverlay = document.getElementById("delete-modal-overlay-question")! as HTMLDivElement
 const deleteQuestionModal = document.getElementById("delete-modal-question")! as HTMLDivElement
 const closeDeleteModal = document.getElementById("close-delete-modal-question")! as HTMLButtonElement
 closeDeleteModal.style.border = "none"
